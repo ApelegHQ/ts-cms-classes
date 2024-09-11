@@ -1,4 +1,4 @@
-/* Copyright © 2024 Exact Realty Limited. All rights reserved.
+/* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { ASN1_CLASS_CONTEXT_SPECIFIC_, Asn1Base } from '@exact-realty/asn1-der';
+import { ASN1_CLASS_CONTEXT_SPECIFIC_, Asn1Base } from '@apeleghq/asn1-der';
 import CMSVersion from './CMSVersion.js';
 import IssuerAndSerialNumber from './IssuerAndSerialNumber.js';
 import SubjectKeyIdentifier from './SubjectKeyIdentifier.js';

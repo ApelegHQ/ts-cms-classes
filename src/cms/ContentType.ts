@@ -1,4 +1,4 @@
-/* Copyright © 2024 Exact Realty Limited. All rights reserved.
+/* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -13,10 +13,18 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1Object } from '@exact-realty/asn1-der';
-import { OID_PKCS7_DATA } from '@exact-realty/crypto-oids';
+import { Asn1Object } from '@apeleghq/asn1-der';
+import {
+	OID_PKCS7_DATA,
+	OID_PKCS7_ENCRYPTEDDATA,
+	OID_PKCS7_ENVELOPEDDATA,
+	OID_PKCS7_SIGNEDDATA,
+} from '@apeleghq/crypto-oids';
 
 let idData: ContentType;
+let idEncryptedData: ContentType;
+let idEnvelopedData: ContentType;
+let idSignedData: ContentType;
 
 class ContentType extends Asn1Object {
 	static get idData(): Readonly<Asn1Object> {
@@ -24,6 +32,24 @@ class ContentType extends Asn1Object {
 			idData = new ContentType(OID_PKCS7_DATA);
 		}
 		return idData;
+	}
+	static get idEncryptedData(): Readonly<Asn1Object> {
+		if (!idEncryptedData) {
+			idEncryptedData = new ContentType(OID_PKCS7_ENCRYPTEDDATA);
+		}
+		return idEncryptedData;
+	}
+	static get idEnvelopedData(): Readonly<Asn1Object> {
+		if (!idEnvelopedData) {
+			idEnvelopedData = new ContentType(OID_PKCS7_ENVELOPEDDATA);
+		}
+		return idEnvelopedData;
+	}
+	static get idSignedData(): Readonly<Asn1Object> {
+		if (!idSignedData) {
+			idSignedData = new ContentType(OID_PKCS7_SIGNEDDATA);
+		}
+		return idSignedData;
 	}
 }
 

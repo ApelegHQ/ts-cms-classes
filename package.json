@@ -1,6 +1,6 @@
 {
-	"name": "@exact-realty/cms-classes",
-	"version": "1.0.0",
+	"name": "@apeleghq/cms-classes",
+	"version": "1.0.1",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -71,7 +71,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Exact-Realty/ts-cms-classes.git"
+		"url": "git+https://github.com/ApelegHQ/ts-cms-classes.git"
 	},
 	"files": [
 		"dist/**/*"
@@ -87,7 +87,7 @@
 		"version": "npm run lint && git add -A src",
 		"postversion": "git push && git push --tags"
 	},
-	"author": "Exact Realty Limited",
+	"author": "Apeleg Limited",
 	"license": "ISC",
 	"keywords": [
 		"asn1",
@@ -102,7 +102,7 @@
 		"x.509"
 	],
 	"dependencies": {
-		"@exact-realty/asn1-der": "^1.0.1",
-		"@exact-realty/crypto-oids": "^20240221.0.0"
+		"@apeleghq/asn1-der": "^1.0.2",
+		"@apeleghq/crypto-oids": "^20240911.0.0"
 	}
 }

@@ -1,4 +1,4 @@
-/* Copyright © 2024 Exact Realty Limited. All rights reserved.
+/* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1Set } from '@exact-realty/asn1-der';
+import { Asn1Set } from '@apeleghq/asn1-der';
 import type Attribute from './Attribute.js';
 
 class Attributes extends Asn1Set {

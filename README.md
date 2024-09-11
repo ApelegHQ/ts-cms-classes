@@ -25,13 +25,13 @@ following DER rules**
 To install the package, you can use npm or yarn:
 
 ```sh
-npm install @exact-realty/cms-classes
+npm install @apeleghq/cms-classes
 ```
 
 or
 
 ```sh
-yarn add @exact-realty/cms-classes
+yarn add @apeleghq/cms-classes
 ```
 
 ### 📚 Usage

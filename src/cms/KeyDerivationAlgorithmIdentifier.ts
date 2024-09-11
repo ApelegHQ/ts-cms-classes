@@ -1,4 +1,4 @@
-/* Copyright © 2024 Exact Realty Limited. All rights reserved.
+/* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -19,11 +19,11 @@ import {
 	Asn1Object,
 	Asn1OctetString,
 	Asn1Sequence,
-} from '@exact-realty/asn1-der';
+} from '@apeleghq/asn1-der';
 import {
 	OID_DIGESTALGO_HMACWITHSHA256,
 	OID_PKCS5_PBKDF2,
-} from '@exact-realty/crypto-oids';
+} from '@apeleghq/crypto-oids';
 import AlgorithmIdentifier from './AlgorithmIdentifier.js';
 
 // OID_PKCS5_PBKDF2

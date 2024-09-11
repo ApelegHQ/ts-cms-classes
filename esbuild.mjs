@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/* Copyright © 2024 Exact Realty Limited. All rights reserved.
+/* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -35,8 +35,8 @@ const buildOptionsBase = {
 	platform: 'node',
 	external: [
 		'esbuild',
-		'@exact-realty/asn1-der',
-		'@exact-realty/crypto-oids',
+		'@apeleghq/asn1-der',
+		'@apeleghq/crypto-oids',
 	],
 };
 

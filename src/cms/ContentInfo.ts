@@ -13,13 +13,23 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1Set } from '@apeleghq/asn1-der';
-import type Attribute from './Attribute.js';
+import type { IAsn1Data } from '@apeleghq/asn1-der';
+import { Asn1Sequence } from '@apeleghq/asn1-der';
+import type ContentType from './ContentType.js';
 
-class SignedAttributes extends Asn1Set {
-	constructor(attributes: Attribute[]) {
-		super(attributes);
+// The `ContentInfo` type is defined in [RFC 5652 Section 3].
+//
+// ```text
+//   ContentInfo ::= SEQUENCE {
+//       contentType        CONTENT-TYPE.
+//                       &id({ContentSet}),
+//       content            [0] EXPLICIT CONTENT-TYPE.
+//                       &Type({ContentSet}{@contentType})}
+// ```
+class ContentInfo extends Asn1Sequence {
+	constructor(contentType: ContentType, content: IAsn1Data) {
+		super([contentType, content]);
 	}
 }
 
-export default SignedAttributes;
+export default ContentInfo;

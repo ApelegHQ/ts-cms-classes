@@ -1,4 +1,4 @@
-/* Copyright © 2024 Exact Realty Limited. All rights reserved.
+/* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -13,12 +13,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import type { Asn1Object, IAsn1Data } from '@exact-realty/asn1-der';
-import {
-	Asn1Boolean,
-	Asn1OctetString,
-	Asn1Sequence,
-} from '@exact-realty/asn1-der';
+import type { Asn1Object, IAsn1Data } from '@apeleghq/asn1-der';
+import { Asn1Boolean, Asn1OctetString, Asn1Sequence } from '@apeleghq/asn1-der';
 
 /*
    Extension  ::=  SEQUENCE  {
