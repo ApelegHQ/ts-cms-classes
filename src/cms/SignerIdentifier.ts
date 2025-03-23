@@ -40,6 +40,7 @@ class SignerIdentifier extends Asn1Base {
 		return this.signerInfoVersion_;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/naming-convention
 	rawContents_(): AllowSharedBufferSource | null | undefined {
 		return this.data_.rawContents_();
 	}

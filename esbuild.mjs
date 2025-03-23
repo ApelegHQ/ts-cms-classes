@@ -33,11 +33,7 @@ const buildOptionsBase = {
 	minify: true,
 	entryNames: '[name]',
 	platform: 'node',
-	external: [
-		'esbuild',
-		'@apeleghq/asn1-der',
-		'@apeleghq/crypto-oids',
-	],
+	external: ['esbuild', '@apeleghq/asn1-der', '@apeleghq/crypto-oids'],
 };
 
 const formats = ['cjs', 'esm'];

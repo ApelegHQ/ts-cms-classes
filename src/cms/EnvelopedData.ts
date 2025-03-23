@@ -56,7 +56,7 @@ class EnvelopedData extends Asn1Sequence {
 		const version =
 			// TODO: (any version 2 attribute certificates are present)
 			// AttributeCertificates are not currently implemented
-			(originatorInfo && false) ||
+			// (originatorInfo && false) ||
 			// TODO: OR .kinds.has(ori)
 			// ORI is not implemented
 			recipientInfos.kinds.has(PasswordRecipientInfo)
