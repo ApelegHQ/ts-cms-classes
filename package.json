@@ -1,6 +1,6 @@
 {
 	"name": "@apeleghq/cms-classes",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -83,8 +83,8 @@
 	"scripts": {
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-		"build": "tsc --emitDeclarationOnly --declarationMap --declaration && node esbuild.mjs",
-		"test": "node --loader ts-node/esm test/index.test.ts",
+		"build": "tsc --emitDeclarationOnly --declarationMap --declaration && node --import ./loader.mjs esbuild.ts",
+		"test": "node --import ./loader.mjs test/index.test.ts",
 		"prepack": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",
 		"preversion": "npm run lint",

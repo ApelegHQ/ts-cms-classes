@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --import ./loader.mjs
 
 /* Copyright © 2024 Apeleg Limited. All rights reserved.
  *
@@ -19,7 +19,7 @@ import esbuild from 'esbuild';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const buildOptionsBase = {
+const buildOptionsBase: esbuild.BuildOptions = {
 	entryPoints: [
 		'./src/cms.ts',
 		'./src/index.ts',
@@ -36,7 +36,7 @@ const buildOptionsBase = {
 	external: ['esbuild', '@apeleghq/asn1-der', '@apeleghq/crypto-oids'],
 };
 
-const formats = ['cjs', 'esm'];
+const formats: esbuild.Format[] = ['cjs', 'esm'];
 
 await Promise.all(
 	formats.map((format) => {
@@ -50,7 +50,7 @@ await Promise.all(
 	}),
 );
 
-const cjsDeclarationFiles = async (directoryPath) => {
+const cjsDeclarationFiles = async (directoryPath: string) => {
 	const entries = await readdir(directoryPath, {
 		withFileTypes: true,
 		recursive: true,
