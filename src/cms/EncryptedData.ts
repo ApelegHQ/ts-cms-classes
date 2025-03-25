@@ -15,8 +15,8 @@
 
 import { Asn1ContextSpecific, Asn1Sequence } from '@apeleghq/asn1-der';
 import CMSVersion from './CMSVersion.js';
-import UnprotectedAttributes from './UnprotectedAttributes.js';
-import EncryptedContentInfo from './EncryptedContentInfo.js';
+import type EncryptedContentInfo from './EncryptedContentInfo.js';
+import type UnprotectedAttributes from './UnprotectedAttributes.js';
 
 /*
       EncryptedData ::= SEQUENCE {

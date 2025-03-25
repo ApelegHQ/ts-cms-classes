@@ -14,8 +14,8 @@
  */
 
 import { Asn1ContextSpecific } from '@apeleghq/asn1-der';
+import type CMSVersion from './CMSVersion.js';
 import PasswordRecipientInfo from './PasswordRecipientInfo.js';
-import CMSVersion from './CMSVersion.js';
 
 /*
    RecipientInfo ::= CHOICE {

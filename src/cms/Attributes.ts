@@ -13,14 +13,13 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1Sequence } from '@apeleghq/asn1-der';
-import type Name from '../x501/Name.js';
-import type CertificateSerialNumber from '../x509/CertificateSerialNumber.js';
+import { Asn1Set } from '@apeleghq/asn1-der';
+import type Attribute from './Attribute.js';
 
-class IssuerAndSerialNumber extends Asn1Sequence {
-	constructor(issuer: Name, serialNumber: CertificateSerialNumber) {
-		super([issuer, serialNumber]);
+class Attributes extends Asn1Set {
+	constructor(attributes: Attribute[]) {
+		super(attributes);
 	}
 }
 
-export default IssuerAndSerialNumber;
+export default Attributes;

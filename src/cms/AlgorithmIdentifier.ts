@@ -13,8 +13,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1Object, Asn1Sequence } from '@apeleghq/asn1-der';
 import type { IAsn1Data } from '@apeleghq/asn1-der';
+import { Asn1Object, Asn1Sequence } from '@apeleghq/asn1-der';
 
 // RFC 5912
 class AlgorithmIdentifier extends Asn1Sequence {

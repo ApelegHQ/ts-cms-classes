@@ -1,6 +1,6 @@
 {
 	"name": "@apeleghq/cms-classes",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A collection of utility classes to encode ASN.1 data following DER rules",
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -59,6 +59,7 @@
 		}
 	},
 	"devDependencies": {
+		"@apeleghq/crypto-oids": "^20250325.0.0",
 		"@eslint/eslintrc": "^3.3.1",
 		"@eslint/js": "^9.23.0",
 		"@types/node": "^22.13.11",
@@ -106,7 +107,6 @@
 		"x.509"
 	],
 	"dependencies": {
-		"@apeleghq/asn1-der": "^1.0.3",
-		"@apeleghq/crypto-oids": "^20240911.0.1"
+		"@apeleghq/asn1-der": "^1.0.3"
 	}
 }

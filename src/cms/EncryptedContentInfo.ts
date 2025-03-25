@@ -14,9 +14,9 @@
  */
 
 import { Asn1ContextSpecific, Asn1Sequence } from '@apeleghq/asn1-der';
+import type ContentEncryptionAlgorithmIdentifier from './ContentEncryptionAlgorithmIdentifier.js';
 import type ContentType from './ContentType.js';
-import EncryptedContent from './EncryptedContent.js';
-import ContentEncryptionAlgorithmIdentifier from './ContentEncryptionAlgorithmIdentifier.js';
+import type EncryptedContent from './EncryptedContent.js';
 
 /*
       EncryptedContentInfo ::= SEQUENCE {

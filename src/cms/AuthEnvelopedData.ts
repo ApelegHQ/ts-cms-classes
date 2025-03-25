@@ -13,13 +13,15 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import type { IAsn1Data, Asn1OctetString } from '@apeleghq/asn1-der';
+import type { IAsn1Data } from '@apeleghq/asn1-der';
 import { Asn1ContextSpecific, Asn1Sequence } from '@apeleghq/asn1-der';
+import type AuthAttributes from './AuthAttributes.js';
 import CMSVersion from './CMSVersion.js';
-import EncryptedContentInfo from './EncryptedContentInfo.js';
-import OriginatorInfo from './OriginatorInfo.js';
-import RecipientInfos from './RecipientInfos.js';
-import UnprotectedAttributes from './UnprotectedAttributes.js';
+import type EncryptedContentInfo from './EncryptedContentInfo.js';
+import type OriginatorInfo from './OriginatorInfo.js';
+import type RecipientInfos from './RecipientInfos.js';
+import type UnauthAttributes from './UnauthAttributes.js';
+import type MessageAuthenticationCode from './MessageAuthenticationCode.js';
 
 /*
       AuthEnvelopedData ::= SEQUENCE {
@@ -35,10 +37,10 @@ class AuthEnvelopedData extends Asn1Sequence {
 	constructor(
 		recipientInfos: RecipientInfos,
 		authEncryptedContentInfo: EncryptedContentInfo,
-		mac: Asn1OctetString,
+		mac: MessageAuthenticationCode,
 		originatorInfo?: OriginatorInfo,
-		authAttrs?: UnprotectedAttributes,
-		unauthAttrs?: UnprotectedAttributes,
+		authAttrs?: AuthAttributes,
+		unauthAttrs?: UnauthAttributes,
 	) {
 		const omit = {};
 		const version = CMSVersion.v0;

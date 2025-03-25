@@ -16,11 +16,11 @@
 import type { IAsn1Data } from '@apeleghq/asn1-der';
 import { Asn1ContextSpecific, Asn1Sequence } from '@apeleghq/asn1-der';
 import CMSVersion from './CMSVersion.js';
-import UnprotectedAttributes from './UnprotectedAttributes.js';
-import EncryptedContentInfo from './EncryptedContentInfo.js';
-import RecipientInfos from './RecipientInfos.js';
-import OriginatorInfo from './OriginatorInfo.js';
+import type EncryptedContentInfo from './EncryptedContentInfo.js';
+import type OriginatorInfo from './OriginatorInfo.js';
 import PasswordRecipientInfo from './PasswordRecipientInfo.js';
+import type RecipientInfos from './RecipientInfos.js';
+import type UnprotectedAttributes from './UnprotectedAttributes.js';
 
 /*
    EnvelopedData ::= SEQUENCE {

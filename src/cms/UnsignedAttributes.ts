@@ -13,13 +13,4 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1Set } from '@apeleghq/asn1-der';
-import type Attribute from './Attribute.js';
-
-class UnsignedAttributes extends Asn1Set {
-	constructor(attributes: Attribute[]) {
-		super(attributes);
-	}
-}
-
-export default UnsignedAttributes;
+export { default } from './Attributes.js';
