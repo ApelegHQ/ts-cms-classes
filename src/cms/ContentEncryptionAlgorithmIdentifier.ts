@@ -21,8 +21,11 @@ import {
 	Asn1Sequence,
 } from '@apeleghq/asn1-der';
 import {
+	OID_NISTALGO_AES_AES128CBC,
 	OID_NISTALGO_AES_AES128GCM,
+	OID_NISTALGO_AES_AES192CBC,
 	OID_NISTALGO_AES_AES192GCM,
+	OID_NISTALGO_AES_AES256CBC,
 	OID_NISTALGO_AES_AES256GCM,
 	OID_PKCS1_IDMGF1,
 	OID_PKCS1_IDRSAESOAEP,
@@ -36,6 +39,45 @@ let rsaOaepWithSha384Mgf1Sha384Empty: ContentEncryptionAlgorithmIdentifier;
 let rsaOaepWithSha512Mgf1Sha512Empty: ContentEncryptionAlgorithmIdentifier;
 
 class ContentEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
+	static get aes128cbc(): (
+		aesIv: AllowSharedBufferSource,
+	) => Readonly<ContentEncryptionAlgorithmIdentifier> {
+		return (aesIv: AllowSharedBufferSource) => {
+			if (aesIv.byteLength !== 16) {
+				throw new RangeError('Invalid IV length');
+			}
+			return new this(
+				new Asn1Object(OID_NISTALGO_AES_AES128CBC),
+				new Asn1OctetString(aesIv),
+			);
+		};
+	}
+	static get aes192cbc(): (
+		aesIv: AllowSharedBufferSource,
+	) => Readonly<ContentEncryptionAlgorithmIdentifier> {
+		return (aesIv: AllowSharedBufferSource) => {
+			if (aesIv.byteLength !== 16) {
+				throw new RangeError('Invalid IV length');
+			}
+			return new this(
+				new Asn1Object(OID_NISTALGO_AES_AES192CBC),
+				new Asn1OctetString(aesIv),
+			);
+		};
+	}
+	static get aes256cbc(): (
+		aesIv: AllowSharedBufferSource,
+	) => Readonly<ContentEncryptionAlgorithmIdentifier> {
+		return (aesIv: AllowSharedBufferSource) => {
+			if (aesIv.byteLength !== 16) {
+				throw new RangeError('Invalid IV length');
+			}
+			return new this(
+				new Asn1Object(OID_NISTALGO_AES_AES256CBC),
+				new Asn1OctetString(aesIv),
+			);
+		};
+	}
 	static get aes128gcm16(): (
 		nonce: AllowSharedBufferSource,
 	) => Readonly<ContentEncryptionAlgorithmIdentifier> {

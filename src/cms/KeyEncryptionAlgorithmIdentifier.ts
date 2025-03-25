@@ -19,6 +19,15 @@ import AlgorithmIdentifier from './AlgorithmIdentifier.js';
 import ContentEncryptionAlgorithmIdentifier from './ContentEncryptionAlgorithmIdentifier.js';
 
 class KeyEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
+	static get pwriAes256cbc(): (
+		aesIv: AllowSharedBufferSource,
+	) => Readonly<KeyEncryptionAlgorithmIdentifier> {
+		return (aesIv: AllowSharedBufferSource) =>
+			new this(
+				new Asn1Object(OID_PKCS9_SMIME_PWRIKEK),
+				ContentEncryptionAlgorithmIdentifier.aes256cbc(aesIv),
+			);
+	}
 	static get pwriAes256gcm(): (
 		nonce: AllowSharedBufferSource,
 	) => Readonly<KeyEncryptionAlgorithmIdentifier> {
