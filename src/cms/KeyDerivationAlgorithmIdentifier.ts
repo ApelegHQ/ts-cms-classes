@@ -21,7 +21,10 @@ import {
 	Asn1Sequence,
 } from '@apeleghq/asn1-der';
 import {
+	OID_DIGESTALGO_HMACWITHSHA1,
 	OID_DIGESTALGO_HMACWITHSHA256,
+	OID_DIGESTALGO_HMACWITHSHA384,
+	OID_DIGESTALGO_HMACWITHSHA512,
 	OID_PKCS5_PBKDF2,
 } from '@apeleghq/crypto-oids';
 import AlgorithmIdentifier from './AlgorithmIdentifier.js';
@@ -37,6 +40,25 @@ PBKDF2-params ::= SEQUENCE {
             DEFAULT { algorithm id-hmacWithSHA1, parameters NULL } }
 */
 class KeyDerivationAlgorithmIdentifier extends AlgorithmIdentifier {
+	/** @deprecated */
+	static get pbkdf2sha1(): (
+		salt: AllowSharedBufferSource,
+		iterationCount: number,
+	) => Readonly<KeyDerivationAlgorithmIdentifier> {
+		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+			return new this(
+				new Asn1Object(OID_PKCS5_PBKDF2),
+				new Asn1Sequence([
+					new Asn1OctetString(salt),
+					new Asn1Integer(iterationCount),
+					new AlgorithmIdentifier(
+						new Asn1Object(OID_DIGESTALGO_HMACWITHSHA1),
+						new Asn1Null(),
+					),
+				]),
+			);
+		};
+	}
 	static get pbkdf2sha256(): (
 		salt: AllowSharedBufferSource,
 		iterationCount: number,
@@ -49,6 +71,42 @@ class KeyDerivationAlgorithmIdentifier extends AlgorithmIdentifier {
 					new Asn1Integer(iterationCount),
 					new AlgorithmIdentifier(
 						new Asn1Object(OID_DIGESTALGO_HMACWITHSHA256),
+						new Asn1Null(),
+					),
+				]),
+			);
+		};
+	}
+	static get pbkdf2sha384(): (
+		salt: AllowSharedBufferSource,
+		iterationCount: number,
+	) => Readonly<KeyDerivationAlgorithmIdentifier> {
+		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+			return new this(
+				new Asn1Object(OID_PKCS5_PBKDF2),
+				new Asn1Sequence([
+					new Asn1OctetString(salt),
+					new Asn1Integer(iterationCount),
+					new AlgorithmIdentifier(
+						new Asn1Object(OID_DIGESTALGO_HMACWITHSHA384),
+						new Asn1Null(),
+					),
+				]),
+			);
+		};
+	}
+	static get pbkdf2sha512(): (
+		salt: AllowSharedBufferSource,
+		iterationCount: number,
+	) => Readonly<KeyDerivationAlgorithmIdentifier> {
+		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+			return new this(
+				new Asn1Object(OID_PKCS5_PBKDF2),
+				new Asn1Sequence([
+					new Asn1OctetString(salt),
+					new Asn1Integer(iterationCount),
+					new AlgorithmIdentifier(
+						new Asn1Object(OID_DIGESTALGO_HMACWITHSHA512),
 						new Asn1Null(),
 					),
 				]),
