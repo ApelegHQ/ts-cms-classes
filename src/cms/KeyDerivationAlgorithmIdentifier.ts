@@ -39,13 +39,18 @@ PBKDF2-params ::= SEQUENCE {
   prf AlgorithmIdentifier
             DEFAULT { algorithm id-hmacWithSHA1, parameters NULL } }
 */
+
+type TIterationCount = number | bigint | AllowSharedBufferSource;
 class KeyDerivationAlgorithmIdentifier extends AlgorithmIdentifier {
 	/** @deprecated */
 	static get pbkdf2sha1(): (
 		salt: AllowSharedBufferSource,
-		iterationCount: number,
+		iterationCount: TIterationCount,
 	) => Readonly<KeyDerivationAlgorithmIdentifier> {
-		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+		return (
+			salt: AllowSharedBufferSource,
+			iterationCount: TIterationCount,
+		) => {
 			return new this(
 				new Asn1Object(OID_PKCS5_PBKDF2),
 				new Asn1Sequence([
@@ -61,9 +66,12 @@ class KeyDerivationAlgorithmIdentifier extends AlgorithmIdentifier {
 	}
 	static get pbkdf2sha256(): (
 		salt: AllowSharedBufferSource,
-		iterationCount: number,
+		iterationCount: TIterationCount,
 	) => Readonly<KeyDerivationAlgorithmIdentifier> {
-		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+		return (
+			salt: AllowSharedBufferSource,
+			iterationCount: TIterationCount,
+		) => {
 			return new this(
 				new Asn1Object(OID_PKCS5_PBKDF2),
 				new Asn1Sequence([
@@ -79,9 +87,12 @@ class KeyDerivationAlgorithmIdentifier extends AlgorithmIdentifier {
 	}
 	static get pbkdf2sha384(): (
 		salt: AllowSharedBufferSource,
-		iterationCount: number,
+		iterationCount: TIterationCount,
 	) => Readonly<KeyDerivationAlgorithmIdentifier> {
-		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+		return (
+			salt: AllowSharedBufferSource,
+			iterationCount: TIterationCount,
+		) => {
 			return new this(
 				new Asn1Object(OID_PKCS5_PBKDF2),
 				new Asn1Sequence([
@@ -97,9 +108,12 @@ class KeyDerivationAlgorithmIdentifier extends AlgorithmIdentifier {
 	}
 	static get pbkdf2sha512(): (
 		salt: AllowSharedBufferSource,
-		iterationCount: number,
+		iterationCount: TIterationCount,
 	) => Readonly<KeyDerivationAlgorithmIdentifier> {
-		return (salt: AllowSharedBufferSource, iterationCount: number) => {
+		return (
+			salt: AllowSharedBufferSource,
+			iterationCount: TIterationCount,
+		) => {
 			return new this(
 				new Asn1Object(OID_PKCS5_PBKDF2),
 				new Asn1Sequence([
