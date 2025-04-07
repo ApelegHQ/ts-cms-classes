@@ -32,7 +32,7 @@ class KeyEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
 		nonce: AllowSharedBufferSource,
 		icvLen?: number,
 	) => Readonly<KeyEncryptionAlgorithmIdentifier> {
-		return (nonce: AllowSharedBufferSource, icvLen?: number,) =>
+		return (nonce: AllowSharedBufferSource, icvLen?: number) =>
 			new this(
 				new Asn1Object(OID_PKCS9_SMIME_PWRIKEK),
 				ContentEncryptionAlgorithmIdentifier.aes256gcm(nonce, icvLen),
