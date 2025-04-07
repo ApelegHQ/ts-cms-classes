@@ -19,6 +19,7 @@ import {
 	Asn1Object,
 	Asn1OctetString,
 	Asn1Sequence,
+	IAsn1Data,
 } from '@apeleghq/asn1-der';
 import {
 	OID_NISTALGO_AES_AES128CBC,
@@ -78,46 +79,55 @@ class ContentEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
 			);
 		};
 	}
-	static get aes128gcm16(): (
+	static get aes128gcm(): (
 		nonce: AllowSharedBufferSource,
+		icvLen?: number,
 	) => Readonly<ContentEncryptionAlgorithmIdentifier> {
-		return (nonce: AllowSharedBufferSource) =>
+		return (nonce: AllowSharedBufferSource, icvLen?: number) =>
 			new this(
 				new Asn1Object(OID_NISTALGO_AES_AES128GCM),
-				new Asn1Sequence([
-					// aes-nonce
-					new Asn1OctetString(nonce),
-					// AES-GCM-ICVlen
-					new Asn1Integer(0x10),
-				]),
+				new Asn1Sequence(
+					[
+						// aes-nonce
+						new Asn1OctetString(nonce),
+						// AES-GCM-ICVlen
+						icvLen ? new Asn1Integer(icvLen) : null,
+					].filter((x) => !!x) as IAsn1Data[],
+				),
 			);
 	}
-	static get aes192gcm16(): (
+	static get aes192gcm(): (
 		nonce: AllowSharedBufferSource,
+		icvLen?: number,
 	) => Readonly<ContentEncryptionAlgorithmIdentifier> {
-		return (nonce: AllowSharedBufferSource) =>
+		return (nonce: AllowSharedBufferSource, icvLen?: number) =>
 			new this(
 				new Asn1Object(OID_NISTALGO_AES_AES192GCM),
-				new Asn1Sequence([
-					// aes-nonce
-					new Asn1OctetString(nonce),
-					// AES-GCM-ICVlen
-					new Asn1Integer(0x10),
-				]),
+				new Asn1Sequence(
+					[
+						// aes-nonce
+						new Asn1OctetString(nonce),
+						// AES-GCM-ICVlen
+						icvLen ? new Asn1Integer(icvLen) : null,
+					].filter((x) => !!x) as IAsn1Data[],
+				),
 			);
 	}
-	static get aes256gcm16(): (
+	static get aes256gcm(): (
 		nonce: AllowSharedBufferSource,
+		icvLen?: number,
 	) => Readonly<ContentEncryptionAlgorithmIdentifier> {
-		return (nonce: AllowSharedBufferSource) =>
+		return (nonce: AllowSharedBufferSource, icvLen?: number) =>
 			new this(
 				new Asn1Object(OID_NISTALGO_AES_AES256GCM),
-				new Asn1Sequence([
-					// aes-nonce
-					new Asn1OctetString(nonce),
-					// AES-GCM-ICVlen
-					new Asn1Integer(0x10),
-				]),
+				new Asn1Sequence(
+					[
+						// aes-nonce
+						new Asn1OctetString(nonce),
+						// AES-GCM-ICVlen
+						icvLen ? new Asn1Integer(icvLen) : null,
+					].filter((x) => !!x) as IAsn1Data[],
+				),
 			);
 	}
 	static get rsaOaepWithRfc8017DefaultParams() {
