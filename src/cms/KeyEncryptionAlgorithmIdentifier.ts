@@ -28,13 +28,14 @@ class KeyEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
 				ContentEncryptionAlgorithmIdentifier.aes256cbc(aesIv),
 			);
 	}
-	static get pwriAes256gcm(): (
+	static get pwriAes256(): (
 		nonce: AllowSharedBufferSource,
+		icvLen?: number,
 	) => Readonly<KeyEncryptionAlgorithmIdentifier> {
-		return (nonce: AllowSharedBufferSource) =>
+		return (nonce: AllowSharedBufferSource, icvLen?: number,) =>
 			new this(
 				new Asn1Object(OID_PKCS9_SMIME_PWRIKEK),
-				ContentEncryptionAlgorithmIdentifier.aes256gcm16(nonce),
+				ContentEncryptionAlgorithmIdentifier.aes256gcm(nonce, icvLen),
 			);
 	}
 }
