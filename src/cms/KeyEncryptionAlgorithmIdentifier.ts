@@ -14,9 +14,14 @@
  */
 
 import { Asn1Object } from '@apeleghq/asn1-der';
-import { OID_PKCS9_SMIME_PWRIKEK } from '@apeleghq/crypto-oids';
+import {
+	OID_NISTALGO_AES_AES256WRAP,
+	OID_PKCS9_SMIME_PWRIKEK,
+} from '@apeleghq/crypto-oids';
 import AlgorithmIdentifier from './AlgorithmIdentifier.js';
 import ContentEncryptionAlgorithmIdentifier from './ContentEncryptionAlgorithmIdentifier.js';
+
+let aes256wrap: KeyEncryptionAlgorithmIdentifier;
 
 class KeyEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
 	static get pwriAes256cbc(): (
@@ -28,15 +33,11 @@ class KeyEncryptionAlgorithmIdentifier extends AlgorithmIdentifier {
 				ContentEncryptionAlgorithmIdentifier.aes256cbc(aesIv),
 			);
 	}
-	static get pwriAes256(): (
-		nonce: AllowSharedBufferSource,
-		icvLen?: number,
-	) => Readonly<KeyEncryptionAlgorithmIdentifier> {
-		return (nonce: AllowSharedBufferSource, icvLen?: number) =>
-			new this(
-				new Asn1Object(OID_PKCS9_SMIME_PWRIKEK),
-				ContentEncryptionAlgorithmIdentifier.aes256gcm(nonce, icvLen),
-			);
+	static get aes256wrap(): Readonly<KeyEncryptionAlgorithmIdentifier> {
+		if (!aes256wrap) {
+			aes256wrap = new this(new Asn1Object(OID_NISTALGO_AES_AES256WRAP));
+		}
+		return aes256wrap;
 	}
 }
 

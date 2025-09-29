@@ -1,4 +1,4 @@
-/* Copyright © 2024 Apeleg Limited. All rights reserved.
+/* Copyright © 2025 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -13,44 +13,30 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { Asn1ContextSpecific, Asn1Sequence } from '@apeleghq/asn1-der';
+import { Asn1Sequence } from '@apeleghq/asn1-der';
 import CMSVersion from './CMSVersion.js';
 import EncryptedKey from './EncryptedKey.js';
-import type KeyDerivationAlgorithmIdentifier from './KeyDerivationAlgorithmIdentifier.js';
 import type KeyEncryptionAlgorithmIdentifier from './KeyEncryptionAlgorithmIdentifier.js';
+import type KEKIdentifier from './KEKIdentifier.js';
 
 /*
-   PasswordRecipientInfo ::= SEQUENCE {
-     version CMSVersion,   -- always set to 0
-     keyDerivationAlgorithm [0] KeyDerivationAlgorithmIdentifier
-                                OPTIONAL,
-     keyEncryptionAlgorithm KeyEncryptionAlgorithmIdentifier,
-     encryptedKey EncryptedKey }
+      KEKRecipientInfo ::= SEQUENCE {
+        version CMSVersion,  -- always set to 4
+        kekid KEKIdentifier,
+        keyEncryptionAlgorithm KeyEncryptionAlgorithmIdentifier,
+        encryptedKey EncryptedKey }
 */
 
-class PasswordRecipientInfo extends Asn1Sequence {
+class KEKRecipientInfo extends Asn1Sequence {
 	version_: CMSVersion;
 
 	constructor(
+		kekid: KEKIdentifier,
 		keyEncryptionAlgorithm: KeyEncryptionAlgorithmIdentifier,
 		encryptedKey: EncryptedKey,
-		keyDerivationAlgorithm?: KeyDerivationAlgorithmIdentifier,
 	) {
-		const version = CMSVersion.v0;
-		super(
-			keyDerivationAlgorithm
-				? [
-						version,
-						new Asn1ContextSpecific(
-							0,
-							keyDerivationAlgorithm,
-							false,
-						),
-						keyEncryptionAlgorithm,
-						encryptedKey,
-					]
-				: [version, keyEncryptionAlgorithm, encryptedKey],
-		);
+		const version = CMSVersion.v4;
+		super([version, kekid, keyEncryptionAlgorithm, encryptedKey]);
 
 		this.version_ = version;
 	}
@@ -60,4 +46,4 @@ class PasswordRecipientInfo extends Asn1Sequence {
 	}
 }
 
-export default PasswordRecipientInfo;
+export default KEKRecipientInfo;

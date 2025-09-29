@@ -15,13 +15,13 @@
 
 export { default as AlgorithmIdentifier } from './AlgorithmIdentifier.js';
 export { default as Attribute } from './Attribute.js';
-export { default as AttributeValue } from './AttributeValue.js';
 export { default as Attributes } from './Attributes.js';
+export { default as AttributeValue } from './AttributeValue.js';
 export { default as AuthAttributes } from './AuthAttributes.js';
 export { default as AuthEnvelopedData } from './AuthEnvelopedData.js';
-export { default as CMSVersion } from './CMSVersion.js';
 export { default as CertificateChoices } from './CertificateChoices.js';
 export { default as CertificateSet } from './CertificateSet.js';
+export { default as CMSVersion } from './CMSVersion.js';
 export { default as ContentEncryptionAlgorithmIdentifier } from './ContentEncryptionAlgorithmIdentifier.js';
 export { default as ContentType } from './ContentType.js';
 export { default as DigestAlgorithmIdentifier } from './DigestAlgorithmIdentifier.js';
@@ -33,6 +33,8 @@ export { default as EncryptedData } from './EncryptedData.js';
 export { default as EncryptedKey } from './EncryptedKey.js';
 export { default as EnvelopedData } from './EnvelopedData.js';
 export { default as IssuerAndSerialNumber } from './IssuerAndSerialNumber.js';
+export { default as KEKIdentifier } from './KEKIdentifier.js';
+export { default as KEKRecipientInfo } from './KEKRecipientInfo.js';
 export { default as KeyDerivationAlgorithmIdentifier } from './KeyDerivationAlgorithmIdentifier.js';
 export { default as KeyEncryptionAlgorithmIdentifier } from './KeyEncryptionAlgorithmIdentifier.js';
 export { default as MessageAuthenticationCode } from './MessageAuthenticationCode.js';
